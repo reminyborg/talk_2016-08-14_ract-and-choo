@@ -35,12 +35,12 @@ background-image: url(http://memesvault.com/wp-content/uploads/Little-Girl-Meme-
 - I like the ones I am going to show you
 ]
 ---
-background-image: url(http://image.slidesharecdn.com/functions-111009201256-phpapp02/95/ppt-on-functions-3-728.jpg)
 .left-column[
 ## Why?
 
 ## Pure functions
 ]
+.right-column.center-image[![Functions!](http://image.slidesharecdn.com/functions-111009201256-phpapp02/95/ppt-on-functions-3-728.jpg)]
 ---
 .left-column[
 ## Why?
@@ -97,8 +97,48 @@ header('Combined', combine(list, user))
 Data and event handlers are passed down the tree
 
 ```
-var user
+function view (props) {
+  return /*<button onClick=props.add> props.value </button>*/
+}
+
+// state = { counter: 0 }
+function container (state) {
+  function add () { state.counter++ }
+
+  return counter({ add: add, value: state.counter })
+}
 ```
 ]
 ---
+layout: true
+.left-column[
+## Why?
 
+## Pure functions
+
+## Functional composition
+
+## Virtual DOM
+]
+---
+.right-column.center[### Model -> DOM]
+.right-column.center-image[![Virtual dom](http://i.stack.imgur.com/S1vng.png)]
+---
+.right-column.center[### Mutating the DOM]
+.right-column.center-image[![Virtual dom](http://static.musictoday.com/store/bands/2117/product_medium/6EAM0478.JPG)]
+---
+.right-column.center[### Mutating the DOM]
+.right-column.center-image[![Virtual dom](http://chieforganizer.org/wp-content/uploads/2016/08/50_no_mere_coincidence.jpg)]
+---
+layout: false
+class: center, middle, inverse
+# React
+---
+.left-column[
+## React?
+]
+.right-column[
+What is react?
+
+- The V in MVC
+]
