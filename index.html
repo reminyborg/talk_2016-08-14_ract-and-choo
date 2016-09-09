@@ -17,36 +17,12 @@
     </style>
   </head>
   <body>
-    <textarea id="source">
-
-      class: center, middle
-
-      # Title
-
-      ---
-
-      # Agenda
-
-      1. Concepts (50%)
-      2. React (40%)
-      3. Choo (10%)
-
-      ---
-
-      # Try some javascript
-
-      This is a nice test
-      ```javascript
-        function () { return 'test' }
-        const test = () => 'testing'
-        <div className="ooh"></div>
-      ```
-
-    </textarea>
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
     </script>
     <script>
-      var slideshow = remark.create();
+      var slideshow = remark.create({
+        sourceUrl: 'slides.md'
+      });
     </script>
   </body>
 </html>
