@@ -1,7 +1,9 @@
   <!DOCTYPE html>
 <html>
   <head>
-    <title>Title</title>
+    <meta name="keywords" content="react,choo,slideshow,presentation" />
+    <meta name="description" content="Application development with React and Choo." />
+    <title>React and Choo</title>
     <meta charset="utf-8">
     <style>
       @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
@@ -13,7 +15,41 @@
         font-family: 'Yanone Kaffeesatz';
         font-weight: normal;
       }
+      a, a > code {
+        color: #ff8000;
+        text-decoration: none;
+      }
+      code { 
+        background-color: #36372f !important;
+        border-radius: 5px;
+      }
       .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+
+      .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
+
+      /* Two-column layout */
+      .left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+      }
+      .left-column h2:last-of-type, .left-column h3:last-child {
+        color: #000;
+      }
+      .right-column {
+        width: 75%;
+        float: right;
+        padding-top: 1em;
+      }
     </style>
   </head>
   <body>
@@ -21,8 +57,10 @@
     </script>
     <script>
       var slideshow = remark.create({
-        sourceUrl: 'slides.md'
-      });
+        sourceUrl: 'slides.md',
+        highlightLanguage: 'javascript',
+        highlightStyle: 'monokai'
+      })
     </script>
   </body>
 </html>
