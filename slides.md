@@ -110,6 +110,61 @@ layout: true
 .right-column.center-image[![Virtual dom](http://chieforganizer.org/wp-content/uploads/2016/08/50_no_mere_coincidence.jpg)]
 ---
 layout: false
+.left-column[
+## Pure functions
+
+## Functional composition
+
+## Virtual DOM
+
+## Immutable
+]
+.right-column.center-image[![Simply not mutate](http://vitiy.info/wp-content/uploads/2015/06/immutability.png)]
+---
+.left-column[
+## Pure functions
+
+## Functional composition
+
+## Virtual DOM
+
+## Immutable
+]
+---
+.right-column[
+Mutating state
+```
+var state = { name: 'Remi', age: 29 }
+
+var newState = state
+newState.name = 'Remzoor'
+
+console.log(newState) // { name: 'Remzoor', age: 29 }
+console.log(state)    // { name: 'Remzoor', age: 29 }
+
+function doINeedToDoSomeExpensiveRedrawing (state, newState) {
+  state === newState
+} // Returns False!
+```
+]
+--
+.right-column[
+Immutable state
+```
+var state = { name: 'Remi', age: 29 }
+
+var newState = Object.assign({}, state, { name: 'Remzoor' })
+
+console.log(newState) // { name: 'Remzoor', age: 29 }
+console.log(state)    // { name: 'Remi', age: 29 }
+
+function doINeedToDoSomeExpensiveRedrawing (state, newState) {
+  state === newState
+} // Returns true!
+```
+]
+---
+layout: false
 class: center, middle, inverse
 # React
 ---
