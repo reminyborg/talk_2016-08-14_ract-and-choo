@@ -17,44 +17,27 @@ class: center, inverse
 class: center, middle, inverse
 # Concepts
 ---
-background-image: url(http://memesvault.com/wp-content/uploads/Little-Girl-Meme-I-Dont-Know-03.jpg)
 .left-column[
-## Why?
-]
----
-.left-column[
-## Why?
-]
-.right-column[
-- Feel smart
-
-- Framework for discussion
-
-- Guidance in times of need
-
-- I like the ones I am going to show you
-]
----
-.left-column[
-## Why?
-
 ## Pure functions
 ]
 .right-column.center-image[![Functions!](http://image.slidesharecdn.com/functions-111009201256-phpapp02/95/ppt-on-functions-3-728.jpg)]
 ---
 .left-column[
-## Why?
-
 ## Pure functions
 ]
 .right-column[
-Same parameters in -> Same view out!
+Same parameters in -> Same result out!
 
 ```
 function hello (name) { return 'Hello ' + name }
 
 hello('Ole Edvard') // Hello Ole Edvard
+hello('Remzoor') // Hello Remzoor
 ```
+gives us
+- predictability
+- testability
+- reusability
 ]
 --
 .right-column[
@@ -71,8 +54,6 @@ function hello (name) { return /* Dom element! */ }
 ]
 ---
 .left-column[
-## Why?
-
 ## Pure functions
 
 ## Functional composition
@@ -112,8 +93,6 @@ function container (state) {
 ---
 layout: true
 .left-column[
-## Why?
-
 ## Pure functions
 
 ## Functional composition
