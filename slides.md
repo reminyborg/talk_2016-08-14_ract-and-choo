@@ -41,11 +41,7 @@ gives us
 ]
 --
 .right-column[
-But wait...
-]
---
-.right-column[
-we can return
+We can return
 ### DOM elements!
 
 ```
@@ -109,7 +105,7 @@ layout: true
 .right-column.center[### Mutating the DOM]
 .right-column.center-image[![Virtual dom](http://chieforganizer.org/wp-content/uploads/2016/08/50_no_mere_coincidence.jpg)]
 ---
-layout: false
+layout: true
 .left-column[
 ## Pure functions
 
@@ -119,17 +115,9 @@ layout: false
 
 ## Immutable
 ]
-.right-column.center-image[![Simply not mutate](http://vitiy.info/wp-content/uploads/2015/06/immutability.png)]
 ---
-.left-column[
-## Pure functions
-
-## Functional composition
-
-## Virtual DOM
-
-## Immutable
-]
+.right-column.center[### Mutating]
+.right-column.center-image[![Simply not mutate](http://vitiy.info/wp-content/uploads/2015/06/immutability.png)]
 ---
 .right-column[
 Mutating state
@@ -172,7 +160,7 @@ class: center, middle, inverse
 ## React?
 ]
 .right-column[
-What is react?
-
-- The V in MVC
+### What is react?
+View layer. Nothing more. Nothing less.
+### Why would you use it?
 ]
