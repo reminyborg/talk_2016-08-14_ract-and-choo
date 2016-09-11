@@ -206,13 +206,15 @@ var app = <div id={id}>
 ```
 ]
 ---
+layout: true
 .left-column[
 ## React?
 
 ## JSX
 
-## Components
+## Component
 ]
+---
 .right-column[
 How do we use it?
 
@@ -238,6 +240,7 @@ const UserList = ({ users = [], selectUser) => (
   <ul>
     { users.map((user) => (
       <User key={user.id}
+        id={user.id}
         picture={user.picture}
         name={user.name}
         profession={user.profession}
@@ -250,13 +253,6 @@ export default UserList
 ```
 ]
 ---
-.left-column[
-## React?
-
-## JSX
-
-## Components
-]
 .right-column[
 How do we use it?
 
@@ -292,13 +288,6 @@ export default UserList
 ```
 ]
 ---
-.left-column[
-## React?
-
-## JSX
-
-## Components
-]
 .right-column.center[
 
 ### Pro tip:
@@ -311,13 +300,6 @@ And in the darkness bind them.
 
 ]
 ---
-.left-column[
-## React?
-
-## JSX
-
-## Components
-]
 .right-column[
 
 Keep your components as dumb as you can.
@@ -344,23 +326,11 @@ With great power comes great responsibility.
 \- Uncle Ben
 ]
 ---
-layout: true
-.left-column[
-## React?
-
-## JSX
-
-## Components
-]
----
 .right-column.center[### Now we are ready to]
-.right-column.center-image[![Simply not mutate](/assets/allthethings.jpg)]
----
-.right-column.center[### Now we are ready to]
-.right-column.center-image[![Simply not mutate](/assets/allthethings.jpg)]
+.right-column.center-image[![All the things](/assets/allthethings.jpg)]
 ---
 .right-column.center[### Not likely]
-.right-column.center-image[![Simply not mutate](http://memesvault.com/wp-content/uploads/Angry-No-Meme-06.jpg)]
+.right-column.center-image[![No](http://memesvault.com/wp-content/uploads/Angry-No-Meme-06.jpg)]
 ---
 layout: false
 .left-column[
@@ -373,5 +343,5 @@ layout: false
 ## Redux
 ]
 .right-column[
-remember what boromir told us about 30 minutes ago?
+We forgot about all our state...
 ]
