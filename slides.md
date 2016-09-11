@@ -60,9 +60,9 @@ Composing views with function trees are great!
 Reuse - Refactor - Rule!
 
 ```
-var header = /*header(title, content)*/
-var list = /*user list*/
-var user = /*user details*/
+const header = /*header(title, content)*/
+const list = /*user list*/
+const user = /*user details*/
 
 header('Users', list)
 header('Selected user', user)
@@ -122,9 +122,9 @@ layout: true
 .right-column[
 Mutating state
 ```
-var state = { name: 'Remi', age: 29 }
+let state = { name: 'Remi', age: 29 }
 
-var newState = state
+let newState = state
 newState.name = 'Remzoor'
 
 console.log(newState) // { name: 'Remzoor', age: 29 }
@@ -139,9 +139,9 @@ function doINeedToDoSomeExpensiveRedrawing (state, newState) {
 .right-column[
 Immutable state
 ```
-var state = { name: 'Remi', age: 29 }
+let state = { name: 'Remi', age: 29 }
 
-var newState = Object.assign({}, state, { name: 'Remzoor' })
+let newState = Object.assign({}, state, { name: 'Remzoor' })
 
 console.log(newState) // { name: 'Remzoor', age: 29 }
 console.log(state)    // { name: 'Remi', age: 29 }
@@ -192,18 +192,18 @@ What is JSX?
 
 ```
 // Input (JSX):
-var app = <div id="mydiv"/>
+let app = <div id="mydiv"/>
 ```
 
 ```
 // Output (JS):
-var app = React.createElement('div', {id:"mydiv"})
+let app = React.createElement('div', {id:"mydiv"})
 ```
 
 Inject values with **{ value }** syntax
 ```
-var id
-var app = <div id={id}>
+let id
+let app = <div id={id}>
 ```
 ]
 ---
@@ -398,11 +398,135 @@ Dispatch some actions
 ```
 store.dispatch({
   type: 'SET_USER',
-  user: 'Remi'
+  user: 314159
 })
 ```
 ```
 console.log(store.getState())
-// { user: 'Remi' }
+// { user: 314159 }
+```
+]
+---
+layout: false
+.left-column[
+## React?
+
+## JSX
+
+## Components
+
+## Redux
+
+## Community
+]
+.right-column[
+### React is cool.
+
+### The community is awesome!
+]
+--
+.right-column[
+- Redux / State
+
+- Connectors
+
+- Widgets
+
+- Routing
+
+- Tabs
+
+- +++
+
+À la carte
+]
+---
+.left-column[
+## React?
+
+## JSX
+
+## Components
+
+## Redux
+
+## Community
+]
+.right-column[
+.center[https://www.npmjs.com/]
+```bash
+npm install --save react-redux
+```
+]
+--
+.right-column[
+```
+import { Provider } from 'react-redux'
+
+<Provider store={store}>
+  <App />
+</Provider>
+```
+
+```
+import UserList from './user-list'
+import { connect } from 'react-redux'
+let App = ({ users, selectUser}) => (
+  <div>
+    <UserList user={users} selectUser={selectUser}/>
+  </div>
+)
+
+const mapState = (state) => ({ users: state.users })
+const mapDispatch = (dispatch) => ({
+    selectUser: (id) => {
+      dispatch({ type: 'SET_USER', user: id })
+    }
+})
+
+App = connect(mapState, mapDispatch)(App)
+```
+
+]
+---
+layout: true
+.left-column[
+## React?
+
+## JSX
+
+## Components
+
+## Redux
+
+## Community
+
+## Build
+]
+---
+.right-column.center-image[![Build?](assets/build.jpg)]
+--
+.right-column[
+- Transpile ES2015 Awesomeness -> Regular ES5
+
+- Include all the modules
+
+- Maby minimize?
+]
+---
+.right-column.center[
+### Javascript fatigue
+Too much, too fast, so tired.
+]
+--
+.right-column[
+Not any more!
+
+```bash
+npm install -g create-react-app
+
+create-react-app my-app
+cd my-app/
+npm start
 ```
 ]
