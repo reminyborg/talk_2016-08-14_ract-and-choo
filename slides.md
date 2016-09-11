@@ -192,7 +192,7 @@ What is JSX?
 
 ```
 // Input (JSX):
-var app = <div id="mydiv"/>;
+var app = <div id="mydiv"/>
 ```
 ```
 // Output (JS):
@@ -204,4 +204,174 @@ Inject values with **{ value }** syntax
 var id
 var app = <div id={id}>
 ```
+]
+---
+.left-column[
+## React?
+
+## JSX
+
+## Components
+]
+.right-column[
+How do we use it?
+
+- Define components
+- Compose!
+
+```
+const User = ({ id, picture, name, profession, select }) => {
+  <div className='user-description' onClick={select}>
+    <img src={picture}/>
+    <h3>{name}</h3>
+    {profession}
+  </div>
+}
+
+export default User
+```
+
+```
+import User from './user'
+
+const UserList = ({ users = [], selectUser) => (
+  <ul>
+    { users.map((user) => (
+      <User key={user.id}
+        picture={user.picture}
+        name={user.name}
+        profession={user.profession}
+        select={() => selectUser(user.id)}
+      />
+    ))}
+  </ul>
+)
+export default UserList
+```
+]
+---
+.left-column[
+## React?
+
+## JSX
+
+## Components
+]
+.right-column[
+How do we use it?
+
+- Define components
+- Compose!
+
+```
+const User = ({ id, picture, name, profession, select }) => {
+  <div className='user-description' onClick={select}>
+    <img src={picture}/>
+    <h3>{name}</h3>
+    {profession}
+  </div>
+}
+
+export default User
+```
+
+```
+import User from './user'
+
+const UserList = ({ users = [], selectUser) => (
+  <ul>
+    { users.map((user) => (
+      <User key={user.id}
+        {...user}
+        select={() => selectUser(user.id)}
+      />
+    ))}
+  </ul>
+)
+export default UserList
+```
+]
+---
+.left-column[
+## React?
+
+## JSX
+
+## Components
+]
+.right-column.center[
+
+### Pro tip:
+
+One component to rule them all.
+
+And in the darkness bind them.
+
+\- J.R.R Tolkien
+
+]
+---
+.left-column[
+## React?
+
+## JSX
+
+## Components
+]
+.right-column[
+
+Keep your components as dumb as you can.
+
+The top controller should do all the magic.
+]
+.right-column[
+This is where the magic happens
+```
+class SelectYourUser extends React.Component {
+  getInitialState()     // ...
+  render()              // your basic render func
+  componentWillMount()  // prepare your dom
+  componentDidMount()   // dom has been changed
+  shouldComponentUpdate // perf optimization
+  ... // many more
+}
+```
+]
+--
+.right-column.center[
+With great power comes great responsibility.
+
+\- Uncle Ben
+]
+---
+layout: true
+.left-column[
+## React?
+
+## JSX
+
+## Components
+]
+---
+.right-column.center[### Now we are ready to]
+.right-column.center-image[![Simply not mutate](/assets/allthethings.jpg)]
+---
+.right-column.center[### Now we are ready to]
+.right-column.center-image[![Simply not mutate](/assets/allthethings.jpg)]
+---
+.right-column.center[### Not likely]
+.right-column.center-image[![Simply not mutate](http://memesvault.com/wp-content/uploads/Angry-No-Meme-06.jpg)]
+---
+layout: false
+.left-column[
+## React?
+
+## JSX
+
+## Components
+
+## Redux
+]
+.right-column[
+remember what boromir told us about 30 minutes ago?
 ]
