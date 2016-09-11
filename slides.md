@@ -158,9 +158,50 @@ class: center, middle, inverse
 ---
 .left-column[
 ## React?
+
+## JSX
 ]
 .right-column[
-### What is react?
-View layer. Nothing more. Nothing less.
-### Why would you use it?
+## What React is:
+
+- View layer
+
+- Html templating
+
+- A very cool component needed for application development
+
+## What react is not:
+
+- Everything else
+]
+--
+.right-column[
+### That is what the React community is for!
+]
+---
+.left-column[
+## React?
+
+## JSX
+]
+.right-column[
+What is JSX?
+
+- A way to define HTML templates in JavaScript
+- Transpiles into JavaScript
+
+```
+// Input (JSX):
+var app = <div id="mydiv"/>;
+```
+```
+// Output (JS):
+var app = React.createElement('div', {id:"mydiv"})
+```
+
+Inject values with **{ value }** syntax
+```
+var id
+var app = <div id={id}>
+```
 ]
