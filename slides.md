@@ -327,7 +327,7 @@ With great power comes great responsibility.
 ]
 ---
 .right-column.center[### Now we are ready to]
-.right-column.center-image[![All the things](/assets/allthethings.jpg)]
+.right-column.center-image[![All the things](assets/allthethings.jpg)]
 ---
 .right-column.center[### Not likely]
 .right-column.center-image[![No](http://memesvault.com/wp-content/uploads/Angry-No-Meme-06.jpg)]
