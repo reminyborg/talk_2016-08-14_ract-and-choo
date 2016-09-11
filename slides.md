@@ -194,6 +194,7 @@ What is JSX?
 // Input (JSX):
 var app = <div id="mydiv"/>
 ```
+
 ```
 // Output (JS):
 var app = React.createElement('div', {id:"mydiv"})
@@ -252,6 +253,7 @@ const UserList = ({ users = [], selectUser) => (
 export default UserList
 ```
 ]
+
 ---
 .right-column[
 How do we use it?
@@ -276,7 +278,7 @@ import User from './user'
 
 const UserList = ({ users = [], selectUser) => (
   <ul>
-    { users.map((user) => (
+    { users.map((user) => ( // Functional composition
       <User key={user.id}
         {...user}
         select={() => selectUser(user.id)}
@@ -366,9 +368,41 @@ layout: true
 ## Redux
 ]
 ---
-.right-column[
-![Redux](http://image.slidesharecdn.com/reactreduxintroduction-151124165017-lva1-app6891/95/react-redux-introduction-33-638.jpg?cb=1448383914)
+.right-column.center[
+# Redux Flow
+![Redux](http://www.theodo.fr/uploads/blog//2016/03/ui_workflow.png)
 ]
 ---
 .right-column[
+```
+function App(state = initialState, action) {
+  switch (action.type) {
+    case SET_USER:
+      return Object.assign({}, state, {
+        user: action.user
+      })
+    default:
+      return state
+  }
+}
+```
+
+Create the store
+```
+import { createStore } from 'redux'
+
+let store = createStore(App)
+```
+
+Dispatch some actions
+```
+store.dispatch({
+  type: 'SET_USER',
+  user: 'Remi'
+})
+```
+```
+console.log(store.getState())
+// { user: 'Remi' }
+```
 ]
