@@ -268,7 +268,7 @@ const User = ({ id, picture, name, profession, select }) => {
   </div>
 }
 
-export default User
+export default User // Pure Function!
 ```
 
 ```
@@ -284,7 +284,7 @@ const UserList = ({ users = [], selectUser) => (
     ))}
   </ul>
 )
-export default UserList
+export default UserList // Pure Function!
 ```
 ]
 ---
@@ -350,7 +350,25 @@ layout: false
 
 - Well defined actions
 
-- Immutable data structures
+- Immutable data structure
 
 - Facilitates Magic!
+]
+---
+layout: true
+.left-column[
+## React?
+
+## JSX
+
+## Components
+
+## Redux
+]
+---
+.right-column[
+![Redux](http://image.slidesharecdn.com/reactreduxintroduction-151124165017-lva1-app6891/95/react-redux-introduction-33-638.jpg?cb=1448383914)
+]
+---
+.right-column[
 ]
