@@ -530,3 +530,13 @@ cd my-app/
 npm start
 ```
 ]
+---
+layout: false
+class: center, middle, inverse
+# Choo
+---
+.left-column[
+## Choo
+]
+.right-column[
+]
