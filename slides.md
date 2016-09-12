@@ -20,7 +20,7 @@ class: center, middle, inverse
 .left-column[
 ## Pure functions
 ]
-.right-column.center-image[![Functions!](http://image.slidesharecdn.com/functions-111009201256-phpapp02/95/ppt-on-functions-3-728.jpg)]
+.right-column.center-image[![Functions!](assets/function.jpg)]
 ---
 .left-column[
 ## Pure functions
@@ -97,13 +97,13 @@ layout: true
 ]
 ---
 .right-column.center[### Model -> DOM]
-.right-column.center-image[![Virtual dom](http://i.stack.imgur.com/S1vng.png)]
+.right-column.center-image[![Virtual dom](assets/vdom.png)]
 ---
 .right-column.center[### Mutating the DOM]
-.right-column.center-image[![Virtual dom](http://static.musictoday.com/store/bands/2117/product_medium/6EAM0478.JPG)]
+.right-column.center-image[![I can do it](assets/icandoit.jpg)]
 ---
 .right-column.center[### Mutating the DOM]
-.right-column.center-image[![Virtual dom](http://chieforganizer.org/wp-content/uploads/2016/08/50_no_mere_coincidence.jpg)]
+.right-column.center-image[![Virtual dom](assets/butterfly.jpg)]
 ---
 layout: true
 .left-column[
@@ -117,7 +117,7 @@ layout: true
 ]
 ---
 .right-column.center[### Mutating]
-.right-column.center-image[![Simply not mutate](http://vitiy.info/wp-content/uploads/2015/06/immutability.png)]
+.right-column.center-image[![Simply not mutate](assets/immutability.png)]
 ---
 .right-column[
 Mutating state
@@ -332,7 +332,7 @@ With great power comes great responsibility.
 .right-column.center-image[![All the things](assets/allthethings.jpg)]
 ---
 .right-column.center[### Not likely]
-.right-column.center-image[![No](http://memesvault.com/wp-content/uploads/Angry-No-Meme-06.jpg)]
+.right-column.center-image[![No](assets/no.jpg)]
 ---
 layout: false
 .left-column[
@@ -345,7 +345,7 @@ layout: false
 ## Redux
 ]
 .right-column[
-![Redux](https://camo.githubusercontent.com/f28b5bc7822f1b7bb28a96d8d09e7d79169248fc/687474703a2f2f692e696d6775722e636f6d2f4a65567164514d2e706e67)
+![Redux](assets/redux.jpg)
 
 
 - Centralized store
@@ -370,7 +370,7 @@ layout: true
 ---
 .right-column.center[
 # Redux Flow
-![Redux](http://www.theodo.fr/uploads/blog//2016/03/ui_workflow.png)
+![Redux](assets/ui_workflow.png)
 ]
 ---
 .right-column[
@@ -538,5 +538,106 @@ class: center, middle, inverse
 .left-column[
 ## Choo
 ]
+.right-column.center-image[![Build?](assets/chooyoung.png)]
+--
 .right-column[
+- Exiting future
+
+- No transpiling (For brand new browsers)
+
+- Built from small interchangable modules!
+
+- Its fast, its fun!
+
+- Tiny, 5kb.
+
+- We are still figuring things out
+]
+---
+.left-column[
+## Choo
+
+## Models
+
+## Template strings
+]
+.right-column[
+### Pragmatic redux
+```
+const app = choo()
+
+app.model({
+  namespace: 'main',
+  state: { title: '' },
+  reducers: {
+    update: (data, state) => ({ title: data })
+  }
+})
+
+send('main:update', 'React and Choo')
+```
+
+```
+app.model({
+  namespace: 'users',
+  state: { list: [] },
+  reducers: {
+    add: (data, state) => ({ list: state.list.concat(data) })
+  }
+})
+
+send('users:add', { id: 1, name: 'Remi' })
+```
+]
+---
+.left-column[
+## Choo
+
+## Models
+
+## Template strings
+]
+.right-column[
+### Tagged template literals
+backtick saves the day
+```
+let name = 'Remi'
+let hello = `Hello ${name}`
+```
+]
+--
+.right-column[
+no need for JSX or transpiling
+```
+const html = require('choo/html')
+
+const mainView = (state, prev, send) => html`
+  <main>
+    <h1>Title: ${state.title}</h1>
+    <input
+      type="text"
+      oninput=${(e) => send('update', e.target.value)}>
+  </main>
+`
+```
+]
+---
+.left-column[
+## Choo
+
+## Models
+
+## Template strings
+
+## No virtual DOM
+]
+.right-column[
+### The real truth is in the dom!
+### Wake up sheeple!
+
+Choo uses morphdom:
+
+Lightweight module for morphing an existing DOM node tree to match a target DOM node tree. It's fast and works with the real DOM—no virtual DOM here!
+
+https://github.com/patrick-steele-idem/morphdom#benchmarks
 ]
