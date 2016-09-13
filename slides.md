@@ -47,6 +47,7 @@ We can return
 ```
 function hello (name) { return /* Dom element! */ }
 ```
+More about that later
 ]
 ---
 .left-column[
@@ -54,8 +55,16 @@ function hello (name) { return /* Dom element! */ }
 
 ## Functional composition
 ]
+.right-column.center[ ### Function tree ]
+.right-column.center-image[![Functions!](assets/functiontree.png)]
+---
+.left-column[
+## Pure functions
+
+## Functional composition
+]
 .right-column[
-Composing views with function trees are great!
+Composing views with function trees!
 
 Reuse - Refactor - Rule!
 
@@ -74,15 +83,15 @@ header('Combined', combine(list, user))
 Data and event handlers are passed down the tree
 
 ```
-function view (props) {
-  return /*<button onClick=props.add> props.value </button>*/
+function view ({ add, value }) {
+  return <button onClick=add> value </button>
 }
 
 // state = { counter: 0 }
 function container (state) {
-  function add () { state.counter++ }
+  function add () { state.counter++ } // event handler
 
-  return counter({ add: add, value: state.counter })
+  return counter({ add: add, value: state.counter + 1 })
 }
 ```
 ]
@@ -92,26 +101,6 @@ layout: true
 ## Pure functions
 
 ## Functional composition
-
-## Virtual DOM
-]
----
-.right-column.center[### Model -> DOM]
-.right-column.center-image[![Virtual dom](assets/vdom.png)]
----
-.right-column.center[### Mutating the DOM]
-.right-column.center-image[![I can do it](assets/icandoit.jpg)]
----
-.right-column.center[### Mutating the DOM]
-.right-column.center-image[![Virtual dom](assets/butterfly.jpg)]
----
-layout: true
-.left-column[
-## Pure functions
-
-## Functional composition
-
-## Virtual DOM
 
 ## Immutable
 ]
@@ -130,9 +119,11 @@ newState.name = 'Remzoor'
 console.log(newState) // { name: 'Remzoor', age: 29 }
 console.log(state)    // { name: 'Remzoor', age: 29 }
 
-function doINeedToDoSomeExpensiveRedrawing (state, newState) {
-  state === newState
-} // Returns False!
+function doINeedToDoSomeExpensiveRedrawing (state, prev) {
+  return state === prev
+}
+doINeedToDoSomeExpensiveRedrawing(newState, state)
+// False!
 ```
 ]
 --
@@ -146,11 +137,43 @@ let newState = Object.assign({}, state, { name: 'Remzoor' })
 console.log(newState) // { name: 'Remzoor', age: 29 }
 console.log(state)    // { name: 'Remi', age: 29 }
 
-function doINeedToDoSomeExpensiveRedrawing (state, newState) {
-  state === newState
-} // Returns true!
+doINeedToDoSomeExpensiveRedrawing(newState, state)
+// Returns true!
 ```
 ]
+---
+layout: false
+.left-column[
+## Pure functions
+
+## Functional composition
+
+## Immutable
+
+## Virtual DOM
+]
+.right-column.center[### Model -> DOM]
+.right-column.center-image[![Virtual dom](assets/vdom.png)]
+---
+layout: true
+.left-column[
+## Pure functions
+
+## Functional composition
+
+## Immutable
+
+## Virtual DOM
+]
+---
+.right-column.center[### Mutating the DOM]
+.right-column.center-image[![I can do it](assets/icandoit.jpg)]
+---
+.right-column.center[### Mutating the DOM]
+.right-column.center-image[![Virtual dom](assets/butterfly.jpg)]
+---
+.right-column.center[### Model -> DOM]
+.right-column.center-image[![Virtual dom](assets/vdom.png)]
 ---
 layout: false
 class: center, middle, inverse
@@ -219,48 +242,7 @@ layout: true
 .right-column[
 How do we use it?
 
-- Define components
-- Compose!
-
-```
-const User = ({ id, picture, name, profession, select }) => {
-  <div className='user-description' onClick={select}>
-    <img src={picture}/>
-    <h3>{name}</h3>
-    {profession}
-  </div>
-}
-
-export default User
-```
-
-```
-import User from './user'
-
-const UserList = ({ users = [], selectUser) => (
-  <ul>
-    { users.map((user) => (
-      <User key={user.id}
-        id={user.id}
-        picture={user.picture}
-        name={user.name}
-        profession={user.profession}
-        select={() => selectUser(user.id)}
-      />
-    ))}
-  </ul>
-)
-export default UserList
-```
-]
-
----
-.right-column[
-How do we use it?
-
-- Define components
-- Compose!
-
+User details
 ```
 const User = ({ id, picture, name, profession, select }) => {
   <div className='user-description' onClick={select}>
@@ -273,18 +255,19 @@ const User = ({ id, picture, name, profession, select }) => {
 export default User // Pure Function!
 ```
 
+User list
 ```
 import User from './user'
 
-const UserList = ({ users = [], selectUser) => (
-  <ul>
+const UserList = ({ users = [], selectUser}) => (
+  <div>
     { users.map((user) => ( // Functional composition
       <User key={user.id}
         {...user}
         select={() => selectUser(user.id)}
       />
     ))}
-  </ul>
+  </div>
 )
 export default UserList // Pure Function!
 ```
@@ -294,6 +277,10 @@ export default UserList // Pure Function!
 
 ### Pro tip:
 
+The top controller should do all the magic.
+]
+--
+.right-column.center[
 One component to rule them all.
 
 And in the darkness bind them.
@@ -303,20 +290,18 @@ And in the darkness bind them.
 ]
 ---
 .right-column[
-
-Keep your components as dumb as you can.
-
-The top controller should do all the magic.
 ]
 .right-column[
 This is where the magic happens
+
+Main App component
 ```
-class SelectYourUser extends React.Component {
-  constructor()         // your initial state
-  render()              // your basic render func
-  componentWillMount()  // prepare your dom
-  componentDidMount()   // dom has been changed
-  shouldComponentUpdate // perf optimization
+class App extends React.Component {
+  constructor()           // your initial state
+  render()                // your basic render func
+  componentWillMount()    // prepare your dom
+  componentDidMount()     // dom has been changed
+  shouldComponentUpdate() // perf optimization
   ... // many more
 }
 ```
@@ -342,8 +327,43 @@ layout: false
 
 ## Components
 
+## Community
+]
+.right-column[
+### React is cool.
+
+### The community is awesome!
+]
+--
+.right-column[
+- Redux / State
+
+- Connectors
+
+- Widgets
+
+- Routing
+
+- Tabs
+
+- +++
+
+À la carte
+]
+---
+layout: true
+.left-column[
+## React?
+
+## JSX
+
+## Components
+
+## Community
+
 ## Redux
 ]
+---
 .right-column[
 ![Redux](assets/redux.jpg)
 
@@ -355,17 +375,6 @@ layout: false
 - Immutable data structure
 
 - Facilitates Magic!
-]
----
-layout: true
-.left-column[
-## React?
-
-## JSX
-
-## Components
-
-## Redux
 ]
 ---
 .right-column.center[
@@ -407,58 +416,6 @@ console.log(store.getState())
 ```
 ]
 ---
-layout: false
-.left-column[
-## React?
-
-## JSX
-
-## Components
-
-## Redux
-
-## Community
-]
-.right-column[
-### React is cool.
-
-### The community is awesome!
-]
---
-.right-column[
-- Redux / State
-
-- Connectors
-
-- Widgets
-
-- Routing
-
-- Tabs
-
-- +++
-
-À la carte
-]
----
-.left-column[
-## React?
-
-## JSX
-
-## Components
-
-## Redux
-
-## Community
-]
-.right-column[
-.center[https://www.npmjs.com/]
-```bash
-npm install --save react-redux
-```
-]
---
 .right-column[
 ```
 import { Provider } from 'react-redux'
@@ -477,14 +434,18 @@ let App = ({ users, selectUser}) => (
   </div>
 )
 
-const mapState = (state) => ({ users: state.users })
-const mapDispatch = (dispatch) => ({
+const mapStateToProps = (state) => ({ users: state.users })
+const mapDispatchToProps = (dispatch) => ({
     selectUser: (id) => {
       dispatch({ type: 'SET_USER', user: id })
     }
 })
 
-App = connect(mapState, mapDispatch)(App)
+App = connect(mapStateToProps, mapDispatchToProps)(App)
+```
+
+```
+const UserList = ({ users = [], selectUser})
 ```
 
 ]
@@ -497,9 +458,9 @@ layout: true
 
 ## Components
 
-## Redux
-
 ## Community
+
+## Redux
 
 ## Build
 ]
@@ -507,6 +468,13 @@ layout: true
 .right-column.center-image[![Build?](assets/build.jpg)]
 --
 .right-column[
+.center[
+https://www.npmjs.com/
+```bash
+npm install --save react react-redux redux
+```
+]
+
 - Transpile ES2015 Awesomeness -> Regular ES5
 
 - Include all the modules
@@ -611,7 +579,7 @@ no need for JSX or transpiling
 ```
 const html = require('choo/html')
 
-const mainView = (state, prev, send) => html`
+const tree = (state, prev, send) => html`
   <main>
     <h1>Title: ${state.title}</h1>
     <input
@@ -619,9 +587,13 @@ const mainView = (state, prev, send) => html`
       oninput=${(e) => send('update', e.target.value)}>
   </main>
 `
+
+// what comes out are real dom nodes tree!
+document.body.appendChild(tree)
 ```
 ]
 ---
+layout: true
 .left-column[
 ## Choo
 
@@ -631,13 +603,27 @@ const mainView = (state, prev, send) => html`
 
 ## No virtual DOM
 ]
-.right-column[
-### The real truth is in the dom!
-### Wake up sheeple!
+---
+.right-column.center[### No virtual elements, no virtual DOM]
+.right-column.center-image[![Build?](assets/realboy.jpg)]
+---
+.right-column.center[
+##### Choo uses Morphdom
+Fast and lightweight DOM diffing/patching (without the virtual part)
+]
+.right-column.center[
+#### The real truth is in the dom!
+#### Wake up sheeple!
+]
+---
+layout: false
+.center[
+### Thank you for your time
 
-Choo uses morphdom:
 
-Lightweight module for morphing an existing DOM node tree to match a target DOM node tree. It's fast and works with the real DOM—no virtual DOM here!
+https://facebook.github.io/react/
 
-https://github.com/patrick-steele-idem/morphdom#benchmarks
+https://github.com/facebookincubator/create-react-app
+
+https://github.com/yoshuawuyts/choo
 ]
