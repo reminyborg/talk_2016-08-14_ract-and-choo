@@ -598,12 +598,17 @@ Fast and lightweight DOM diffing/patching (without the virtual part)
 ---
 layout: false
 .center[
-### Thank you for your time
+## Thank you for your time
+### http://reminyborg.com
+]
 
-
+.center[
+React:
 https://facebook.github.io/react/
 
+React get started:
 https://github.com/facebookincubator/create-react-app
 
+Choo:
 https://github.com/yoshuawuyts/choo
 ]
