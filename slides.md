@@ -312,7 +312,7 @@ The top controller should do all the magic.
 This is where the magic happens
 ```
 class SelectYourUser extends React.Component {
-  getInitialState()     // ...
+  constructor()         // your initial state
   render()              // your basic render func
   componentWillMount()  // prepare your dom
   componentDidMount()   // dom has been changed
