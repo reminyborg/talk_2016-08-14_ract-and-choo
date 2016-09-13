@@ -293,12 +293,6 @@ class App extends React.Component {
 }
 ```
 ]
---
-.right-column.center[
-With great power comes great responsibility.
-
-\- Uncle Ben
-]
 ---
 .right-column.center[### Now we are ready to]
 .right-column.center-image[![All the things](assets/allthethings.jpg)]
@@ -370,6 +364,7 @@ layout: true
 ]
 ---
 .right-column[
+Define reducers
 ```
 function App(state = initialState, action) {
   switch (action.type) {
@@ -512,9 +507,7 @@ class: center, middle, inverse
 .left-column[
 ## Choo
 
-## Models
-
-## Template strings
+## State
 ]
 .right-column[
 ### Pragmatic redux
@@ -548,7 +541,7 @@ send('users:add', { id: 1, name: 'Remi' })
 .left-column[
 ## Choo
 
-## Models
+## State
 
 ## Template strings
 ]
@@ -557,7 +550,7 @@ send('users:add', { id: 1, name: 'Remi' })
 backtick saves the day
 ```
 let name = 'Remi'
-let hello = `Hello ${name}`
+let hello = `Hello ${name}` // Hello Remi
 ```
 ]
 --
@@ -584,7 +577,7 @@ layout: true
 .left-column[
 ## Choo
 
-## Models
+## State
 
 ## Template strings
 
