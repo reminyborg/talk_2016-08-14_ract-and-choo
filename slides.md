@@ -42,10 +42,10 @@ gives us
 --
 .right-column[
 We can return
-### DOM elements!
+### Virtual DOM elements!
 
 ```
-function hello (name) { return /* Dom element! */ }
+function hello (name) { return /* Virtual Dom element! */ }
 ```
 More about that later
 ]
@@ -55,16 +55,24 @@ More about that later
 
 ## Functional composition
 ]
-.right-column.center[ ### Function tree ]
-.right-column.center-image[![Functions!](assets/functiontree.png)]
----
-.left-column[
-## Pure functions
-
-## Functional composition
-]
 .right-column[
 Composing views with function trees!
+
+Data and event handlers
+passed down the function tree
+
+```
+// state = { counter: 0 }
+function container (state) {
+  function add () { state.value++ } // event handler
+
+  return counter({ add: add, value: state.value + 1 })
+}
+
+function counter ({ add, value }) {
+  return <button onClick=add> value </button>
+}
+```
 
 Reuse - Refactor - Rule!
 
@@ -78,21 +86,6 @@ header('Selected user', user)
 
 // Combine views with at combine functions
 header('Combined', combine(list, user))
-```
-
-Data and event handlers are passed down the tree
-
-```
-function view ({ add, value }) {
-  return <button onClick=add> value </button>
-}
-
-// state = { counter: 0 }
-function container (state) {
-  function add () { state.counter++ } // event handler
-
-  return counter({ add: add, value: state.counter + 1 })
-}
 ```
 ]
 ---
@@ -181,8 +174,6 @@ class: center, middle, inverse
 ---
 .left-column[
 ## React?
-
-## JSX
 ]
 .right-column[
 ## What React is:
@@ -191,15 +182,11 @@ class: center, middle, inverse
 
 - Html templating
 
-- A very cool component needed for application development
+- A very cool module
 
 ## What react is not:
 
 - Everything else
-]
---
-.right-column[
-### That is what the React community is for!
 ]
 ---
 .left-column[
@@ -208,7 +195,7 @@ class: center, middle, inverse
 ## JSX
 ]
 .right-column[
-What is JSX?
+React components are defined in JSX
 
 - A way to define HTML templates in JavaScript
 - Transpiles into JavaScript
