@@ -152,9 +152,6 @@ layout: true
 ## Virtual DOM
 ]
 ---
-.right-column.center[### Model -> DOM]
-.right-column.center-image[![Virtual dom](assets/vdom.png)]
----
 .right-column.center[### Mutating the DOM]
 .right-column.center-image[![I can do it](assets/icandoit.jpg)]
 ---
