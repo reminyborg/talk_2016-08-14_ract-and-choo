@@ -43,12 +43,16 @@ gives us
 
 easy testing
 ```
-assert.equal(hello(''), 'Hello ',)
+assert.equal(hello('Remi'), 'Hello Remi')
 ```
 
 no matter the complexity or functional nesting
 ```
-assert.deepEqual(parseComplexBinary(buffer), { id: 1234, type: 'PACKET', values: [34, 543, 234, 1] })
+assert.deepEqual(parseComplexBinary(buffer), {
+    id: 1234,
+    type: 'PACKET',
+    values: [34, 543, 234, 1] 
+})
 ```
 ]
 ---
