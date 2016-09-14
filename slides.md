@@ -220,10 +220,9 @@ let app = <div id="mydiv"/>
 let app = React.createElement('div', { id: 'mydiv'})
 
 console.log(app)
+// virtual element:
 // Object { type: 'div', props: { id: 'mydiv' }}
 ```
-
-out comes virtual elements
 ]
 --
 .right-column[
@@ -586,6 +585,9 @@ const tree = (state, prev, send) => html`
 `
 
 // what comes out are real dom nodes tree!
+console.log(tree)
+// <main>...</main>
+
 document.body.appendChild(tree)
 ```
 ]
