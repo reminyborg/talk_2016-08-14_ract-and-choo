@@ -217,9 +217,16 @@ let app = <div id="mydiv"/>
 
 ```
 // Output (JS):
-let app = React.createElement('div', {id:"mydiv"})
+let app = React.createElement('div', { id: 'mydiv'})
+
+console.log(app)
+// Object { type: 'div', props: { id: 'mydiv' }}
 ```
 
+out comes virtual elements
+]
+--
+.right-column[
 Inject values with **{ value }** syntax
 ```
 let id
