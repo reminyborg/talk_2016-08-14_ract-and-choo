@@ -17,14 +17,13 @@ class: center, inverse
 class: center, middle, inverse
 # Concepts
 ---
+layout: true
 .left-column[
 ## Pure functions
 ]
+---
 .right-column.center-image[![Functions!](assets/function.jpg)]
 ---
-.left-column[
-## Pure functions
-]
 .right-column[
 Same parameters in -> Same result out!
 
@@ -41,6 +40,19 @@ gives us
 ]
 --
 .right-column[
+
+easy testing
+```
+assert.equal(hello(''), 'Hello ',)
+```
+
+no matter the complexity or functional nesting
+```
+assert.deepEqual(parseComplexBinary(buffer), { id: 1234, type: 'PACKET', values: [34, 543, 234, 1] })
+```
+]
+---
+.right-column[
 We can return
 ### Virtual DOM elements!
 
@@ -50,6 +62,7 @@ function hello (name) { return /* Virtual Dom element! */ }
 More about that later
 ]
 ---
+layout: false
 .left-column[
 ## Pure functions
 
