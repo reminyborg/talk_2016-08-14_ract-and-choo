@@ -89,7 +89,7 @@ header('Combined', combine(list, user))
 ```
 ]
 ---
-layout: true
+layout: false
 .left-column[
 ## Pure functions
 
@@ -97,10 +97,16 @@ layout: true
 
 ## Immutable
 ]
----
 .right-column.center[### Mutating]
 .right-column.center-image[![Simply not mutate](assets/immutability.png)]
 ---
+.left-column[
+## Pure functions
+
+## Functional composition
+
+## Immutable
+]
 .right-column[
 Mutating state
 ```
@@ -135,19 +141,6 @@ doINeedToDoSomeExpensiveRedrawing(newState, state)
 ```
 ]
 ---
-layout: false
-.left-column[
-## Pure functions
-
-## Functional composition
-
-## Immutable
-
-## Virtual DOM
-]
-.right-column.center[### Model -> DOM]
-.right-column.center-image[![Virtual dom](assets/vdom.png)]
----
 layout: true
 .left-column[
 ## Pure functions
@@ -158,6 +151,9 @@ layout: true
 
 ## Virtual DOM
 ]
+---
+.right-column.center[### Model -> DOM]
+.right-column.center-image[![Virtual dom](assets/vdom.png)]
 ---
 .right-column.center[### Mutating the DOM]
 .right-column.center-image[![I can do it](assets/icandoit.jpg)]
